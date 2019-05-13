@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
 public class DiskSchedulingAlgorithms{
 
 	private final int val1 = 0;
@@ -12,7 +13,6 @@ public class DiskSchedulingAlgorithms{
 			int range = 1000-1+1;
 			int x = (int)(Math.random() *range)+1; //generating randomnumbers from one to 1000
 			list.add(x); //inserting numbers in hashmap
-
 		}
 		/*list.add(98);
 		list.add(183);
@@ -55,6 +55,21 @@ public class DiskSchedulingAlgorithms{
 		System.out.println(num_cylinders + " cylinders");
 		
 	}
+	public void SCAN(int head) {
+		
+		list.add(head); //add head to the list
+		int num_cylinders =0 ;
+		int headloc; //location of head
+		Collections.sort(list); //sorting the list
+		int max = list.get(list.size()-1); //maximum element in list
+		
+		num_cylinders = head+max; //head movement is head plus max element
+		
+		
+		
+		System.out.println(num_cylinders + " cylinders");
+	}
+	
 	
 	//source for help with this method :
 	//https://beginnersbook.com/2014/06/java-iterator-with-examples/
