@@ -19,7 +19,7 @@ public class TaProblem implements Runnable{
 	
 	
 	//using constructor to initialize the instance variable 
-	public TaProblem (Semaphore Tawake, Semaphore numberOfchair, Semaphore TaAssist) {
+	public TaProblem () {
 		this.Tawake= Tawake;
 		this.numberOfchair= numberOfchair;
 		this.TaAssist= TaAssist;
@@ -90,11 +90,9 @@ public class TaProblem implements Runnable{
 					 Tawake.tryAcquire();
 					System.out.println("student who is getting assistance is" + student_is_waiting);
 				}
-			finally {
-				TaAssist.release();
-				Tawake.release();
-				
-			}
+			catch(Exception e) {
+					continue;
+				}
 			}
 			else if(numberOfchair.tryAcquire()) {
 						try {
@@ -149,7 +147,7 @@ public class check {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
     //running the contructor
-		TaProblem c= new TaProblem(null, null, null);
+		TaProblem c= new TaProblem();
 		c.run();
 		System.out.println(c);
 
